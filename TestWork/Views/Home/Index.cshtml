@@ -1,0 +1,84 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    List<Drink>? drinks = (List<Drink>?)ViewData["Drinks"];
+    List<Coin>? coins = (List<Coin>?)ViewData["Coins"];
+}
+
+<link rel="stylesheet" href="~/css/index.css" />
+
+<div class="main-container">
+    <button type="button" class="management-button" data-bs-toggle="modal" data-bs-target="#create-drink-modal">
+        Добавить напиток
+    </button>
+
+    <h2 class="table-label">Напитки</h2>
+    <table class="table-striped" id="admin-drinks-list">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Цена</th>
+                <th>Количество</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (drinks != null && drinks.Any())
+            {
+                @foreach (Drink drink in drinks)
+                {
+                    <tr data-drink-id="@drink.Id">
+                        <td>@drink.Name</td>
+                        <td>@drink.Price</td>
+                        <td>@drink.Quantity</td>
+                        <td><img src="~/icons/pencil.svg" onclick="showUpdateDrinkModal(event)"></td>
+                        <td><img src="~/icons/trash.svg" onclick="showDeleteDrinkModal(event)"></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <h2 class="table-label">Монеты</h2>
+    <table class="table-striped" id="admin-coins-list">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Номинал</th>
+                <th>Доступность</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (coins != null && coins.Any())
+            {
+                @foreach (Coin coin in coins)
+                {
+                    <tr data-coin-id="@coin.Id" data-coin-is-blocked="@coin.IsBlocked">
+                        <td>@coin.Name</td>
+                        <td>@coin.Denomination</td>
+                        <td>
+                            @if (coin.IsBlocked)
+                            {
+                                <img src="~/icons/x.svg" onclick="showChangeStateModal(event)">
+                            }
+                            else
+                            {
+                                <img src="~/icons/check.svg" onclick="showChangeStateModal(event)">
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+    <partial name="CreateDrinkModal.cshtml" />
+
+    <partial name="UpdateDrinkModal.cshtml" />
+
+    <partial name="DeleteDrinkModal.cshtml" />
+
+    <partial name="ChangeStateModal.cshtml" />
+
+</div>
+
+<script src="~/js/index.js"></script>

@@ -1,0 +1,32 @@
+﻿<div class="modal fade" id="update-drink-modal" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <form class="modal-content needs-validation" novalidate onsubmit="updateDrink(event)">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="col-md-12">
+                    <label for="drink-price" class="form-label">Цена</label>
+                    <input type="text" class="form-control" id="drink-price-update" required onkeydown="inputNumbersCheck(event)">
+                    <div class="invalid-feedback">
+                        Укажите цену напитка.
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <label for="drink-quantity" class="form-label">Количество</label>
+                    <input type="text" class="form-control" id="drink-quantity-update" onkeydown="inputNumbersCheck(event)">
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                <button type="submit" class="btn btn-primary" id="update-drink-button">Изменить</button>
+            </div>
+        </form>
+    </div>
+</div>
