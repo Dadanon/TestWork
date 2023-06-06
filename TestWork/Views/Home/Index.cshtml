@@ -1,15 +1,13 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Панель администратора";
     List<Drink>? drinks = (List<Drink>?)ViewData["Drinks"];
     List<Coin>? coins = (List<Coin>?)ViewData["Coins"];
 }
 
-<link rel="stylesheet" href="~/css/index.css" />
-
 <div class="main-container">
-    <button type="button" class="management-button" data-bs-toggle="modal" data-bs-target="#create-drink-modal">
+    <a class="management-button" data-bs-toggle="modal" data-bs-target="#create-drink-modal" onclick="clearCreateDrinkModal()">
         Добавить напиток
-    </button>
+    </a>
 
     <h2 class="table-label">Напитки</h2>
     <table class="table-striped" id="admin-drinks-list">
@@ -70,6 +68,10 @@
             }
         </tbody>
     </table>
+
+    <a class="management-button" asp-controller="Home" asp-action="ShowDrinks">
+        Перейти в магазин
+    </a>
 
     <partial name="CreateDrinkModal.cshtml" />
 

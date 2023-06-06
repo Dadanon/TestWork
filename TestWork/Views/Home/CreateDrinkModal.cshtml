@@ -18,7 +18,7 @@
 
                 <div class="col-md-12">
                     <label for="drink-price" class="form-label">Цена</label>
-                    <input type="text" class="form-control" id="drink-price-create" required onkeydown="inputNumbersCheck(event)">
+                    <input type="text" class="form-control" id="drink-price-create" onkeydown="inputNumbersCheck(event)" required>
                     <div class="invalid-feedback">
                         Укажите цену напитка.
                     </div>
@@ -26,7 +26,10 @@
 
                 <div class="col-md-12">
                     <label for="drink-quantity" class="form-label">Количество</label>
-                    <input type="text" class="form-control" id="drink-quantity-create" onkeydown="inputNumbersCheck(event)">
+                    <input type="text" class="form-control" id="drink-quantity-create" onkeydown="inputNumbersCheck(event)" required>
+                    <div class="invalid-feedback">
+                        Укажите количество порций.
+                    </div>
                 </div>
 
             </div>

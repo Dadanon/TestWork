@@ -5,10 +5,6 @@
       "PackagePath": "staticwebassets\\TestWork.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\Me\\source\\repos\\TestWork\\TestWork\\wwwroot\\css\\index.css",
-      "PackagePath": "staticwebassets\\css\\index.css"
-    },
-    {
       "Id": "C:\\Users\\Me\\source\\repos\\TestWork\\TestWork\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -31,6 +27,10 @@
     {
       "Id": "C:\\Users\\Me\\source\\repos\\TestWork\\TestWork\\wwwroot\\icons\\x.svg",
       "PackagePath": "staticwebassets\\icons\\x.svg"
+    },
+    {
+      "Id": "C:\\Users\\Me\\source\\repos\\TestWork\\TestWork\\wwwroot\\js\\drinks.js",
+      "PackagePath": "staticwebassets\\js\\drinks.js"
     },
     {
       "Id": "C:\\Users\\Me\\source\\repos\\TestWork\\TestWork\\wwwroot\\js\\index.js",

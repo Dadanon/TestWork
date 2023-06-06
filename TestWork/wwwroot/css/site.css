@@ -17,6 +17,149 @@ html {
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
+.management-button {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0 0 10px rgba(0.7, 0.7, 0.7, 0.8);
+    margin-bottom: 50px;
+}
+
+    .management-button:active {
+        box-shadow: 0 0 10px rgba(0.3, 0.3, 0.3, 0.4);
+    }
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+    .main-container .table-striped {
+        border: 1px solid #375;
+        margin-bottom: 50px;
+        max-width: 500px;
+        box-shadow: 0 0 10px rgba(0.7, 0.7, 0.7, 0.8);
+    }
+
+        .main-container .table-striped th,
+        .main-container .table-striped td {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #375;
+        }
+
+td img {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+.table-label {
+    margin-bottom: 50px;
+}
+
+
+
+.store-drinks-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.store-drink-container {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: space-between;
+    width: 200px;
+    height: 100px;
+    border: 1px solid black;
+    padding: 0 10px;
+    margin: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: bisque;
+    text-align: center;
+}
+
+    .store-drink-container:active {
+        background-color: blanchedalmond;
+        box-shadow: 0 0 10px rgba(0.4, 0.7, 0.5, 0.4);
+    }
+
+.store-drink-label {
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.store-drink-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.store-drinks-list-label,
+.store-drinks-list,
+.store-coins-list-label,
+.store-coins-list,
+.sum-label {
+    margin-bottom: 50px;
+}
+
+.store-coins-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.store-coin-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    border: 2px solid black;
+    margin: 10px;
+    background-color: #a5d78a;
+}
+
+    .store-coin-container.active {
+        cursor: pointer;
+    }
+
+    .store-coin-container.active:active {
+        box-shadow: 0 0 10px rgba(52, 112, 216, 0.80);
+    }
+
+.store-coin-name {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.store-coin-denomination {
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+.store-drink-quantity,
+.store-drink-price {
+    font-weight: 700;
 }

@@ -1,1 +1,48 @@
-﻿<h2>Drinks</h2>
+﻿@{
+    ViewData["Title"] = "Магазин";
+    List<Drink>? drinks = (List<Drink>?)ViewData["Drinks"];
+    List<Coin>? coins = (List<Coin>?)ViewData["Coins"];
+}
+
+<div class="main-container">
+    <h2 class="store-drinks-list-label">Список напитков</h2>
+    @if (drinks != null && drinks.Any())
+    {
+        <div class="store-drinks-list">
+            @foreach (Drink drink in drinks)
+            {
+                <div class="store-drink-container" data-drink-id="@drink.Id" onclick="buyDrink(event)">
+                    <div class="store-drink-label">@drink.Name</div>
+                    <div class="store-drink-info">
+                        <div>
+                            Кол-во: <span class="store-drink-quantity">@drink.Quantity</span>
+                        </div>
+                        <div>
+                            Цена: <span class="store-drink-price">@drink.Price</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+    <h2 class="store-coins-list-label">Монеты</h2>
+    @if (coins != null && coins.Any())
+    {
+        <div class="store-coins-list">
+            @foreach (Coin coin in coins)
+            {
+                <div class="store-coin-container" data-coin-id="@coin.Id" data-coin-is-blocked="@coin.IsBlocked">
+                    <div class="store-coin-name">@coin.Name</div>
+                    <div class="store-coin-denomination">@coin.Denomination</div>
+                </div>
+            }
+        </div>
+    }
+
+    <h2 class="sum-label">Внесенная сумма</h2>
+    <input id="current-money" value="0" disabled />
+
+</div>
+
+<script src="~/js/drinks.js"></script>

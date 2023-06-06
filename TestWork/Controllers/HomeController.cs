@@ -34,47 +34,82 @@ namespace TestWork.Controllers
         [Route("/drinks")]
         public IActionResult ShowDrinks()
         {
+            ViewData["Coins"] = _coinsService.GetCoins();
+            ViewData["Drinks"] = _drinksService.GetDrinks();
             return View("Drinks");
         }
 
         [HttpPost]
-        public void CreateDrink([FromBody]Drink drink)
+        public IActionResult CreateDrink([FromBody]Drink drink)
         {
-            _drinksService.CreateDrink(drink);
-        }
-
-        [HttpPost]
-        public void UpdateDrink([FromBody] Drink drink)
-        {
-            Drink? oldDrink = _drinksService.GetDrinkById(drink.Id);
-            if (oldDrink != null)
+            if (drink != null)
             {
-                oldDrink.Price = drink.Price;
-                oldDrink.Quantity = drink.Quantity;
-                _drinksService.UpdateDrink(oldDrink);
+                _drinksService.CreateDrink(drink);
+                return Ok();
             }
+            return BadRequest();
         }
 
         [HttpPost]
-        public void DeleteDrink([FromBody]int drinkId)
+        public IActionResult UpdateDrink([FromBody] Drink drink)
+        {
+            if (drink != null)
+            {
+                Drink? oldDrink = _drinksService.GetDrinkById(drink.Id);
+                if (oldDrink != null)
+                {
+                    oldDrink.Price = drink.Price;
+                    oldDrink.Quantity = drink.Quantity;
+                    _drinksService.UpdateDrink(oldDrink);
+                    return Ok();
+                }
+            }
+            return BadRequest();
+        }
+
+        [HttpPost]
+        public IActionResult DeleteDrink([FromBody]int drinkId)
         {
             Drink? oldDrink = _drinksService.GetDrinkById(drinkId);
             if (oldDrink != null)
             {
                 _drinksService.DeleteDrink(oldDrink);
+                return Ok();
             }
+            return BadRequest();
         }
 
         [HttpPost]
-        public void UpdateCoin([FromBody]int coinId)
+        public IActionResult UpdateCoin([FromBody]int? coinId)
         {
-            Coin? oldCoin = _coinsService.GetCoinById(coinId);
-            if (oldCoin != null)
+            if (coinId != null)
             {
-                bool newState = !oldCoin.IsBlocked;
-                oldCoin.IsBlocked = newState;
-                _coinsService.UpdateCoin(oldCoin);
+                Coin? oldCoin = _coinsService.GetCoinById((int)coinId);
+                if (oldCoin != null)
+                {
+                    bool newState = !oldCoin.IsBlocked;
+                    oldCoin.IsBlocked = newState;
+                    _coinsService.UpdateCoin(oldCoin);
+                    return Ok();
+                }
             }
+            return BadRequest();
+        }
+
+        [HttpPost]
+        public IActionResult ChangeDrinkQuantity([FromBody]int? drinkId)
+        {
+            if (drinkId != null)
+            {
+                Drink? drink = _drinksService.GetDrinkById((int)drinkId);
+                if (drink != null)
+                {
+                    drink.Quantity--;
+                    _drinksService.UpdateDrink(drink);
+                    return Ok();
+                }
+            }
+            return BadRequest();
         }
     }
 }

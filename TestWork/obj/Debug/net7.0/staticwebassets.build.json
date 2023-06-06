@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "aNSs1CseV/PaVo1irqaT263fJm1AJ8RkPestuD9v7+4=",
+  "Hash": "Ykg/J1l13klm5fMLxVFy2ie1oZ+ZBtS4mzNmvorSpSk=",
   "Source": "TestWork",
   "BasePath": "_content/TestWork",
   "Mode": "Default",
@@ -49,23 +49,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Me\\source\\repos\\TestWork\\TestWork\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\TestWork.bundle.scp.css"
-    },
-    {
-      "Identity": "C:\\Users\\Me\\source\\repos\\TestWork\\TestWork\\wwwroot\\css\\index.css",
-      "SourceId": "TestWork",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Me\\source\\repos\\TestWork\\TestWork\\wwwroot\\",
-      "BasePath": "_content/TestWork",
-      "RelativePath": "css/index.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\index.css"
     },
     {
       "Identity": "C:\\Users\\Me\\source\\repos\\TestWork\\TestWork\\wwwroot\\css\\site.css",
@@ -168,6 +151,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\icons\\x.svg"
+    },
+    {
+      "Identity": "C:\\Users\\Me\\source\\repos\\TestWork\\TestWork\\wwwroot\\js\\drinks.js",
+      "SourceId": "TestWork",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Me\\source\\repos\\TestWork\\TestWork\\wwwroot\\",
+      "BasePath": "_content/TestWork",
+      "RelativePath": "js/drinks.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\drinks.js"
     },
     {
       "Identity": "C:\\Users\\Me\\source\\repos\\TestWork\\TestWork\\wwwroot\\js\\index.js",

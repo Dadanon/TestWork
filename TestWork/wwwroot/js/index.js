@@ -1,4 +1,14 @@
-﻿// Добавить напиток
+﻿// Очистить окно нового напитка
+
+function clearCreateDrinkModal() {
+    const modal = document.getElementById('create-drink-modal');
+    modal.querySelector('form').classList.remove('was-validated');
+    document.getElementById('create-drink-modal')
+        .querySelectorAll('input')
+        .forEach(input => input.value = '');
+}
+
+// Добавить напиток
 
 function createDrink(event) {
     const form = event.target;
@@ -19,19 +29,25 @@ function createDrink(event) {
             },
             body: JSON.stringify(drink)
         })
-            .then(() => {
-                let table = document.getElementById('admin-drinks-list');
-                let tableBody = table.querySelector('tbody');
+            .then(response => {
+                if (response.ok) {
+                    let table = document.getElementById('admin-drinks-list');
+                    let tableBody = table.querySelector('tbody');
 
-                let newRow = document.createElement('tr');
-                newRow.innerHTML = `
-                    <td>${drink.name}</td>
-                    <td>${drink.price}</td>
-                    <td>${drink.quantity}</td>
-                    <td><img src="/icons/pencil.svg" onclick="showUpdateDrinkModal(event)"></td>
-                    <td><img src="/icons/trash.svg" onclick="showDeleteDrinkModal(event)"></td>
-                `;
-                tableBody.appendChild(newRow);
+                    let newRow = document.createElement('tr');
+                    newRow.innerHTML = `
+                        <td>${drink.name}</td>
+                        <td>${drink.price}</td>
+                        <td>${drink.quantity}</td>
+                        <td><img src="/icons/pencil.svg" onclick="showUpdateDrinkModal(event)"></td>
+                        <td><img src="/icons/trash.svg" onclick="showDeleteDrinkModal(event)"></td>
+                    `;
+                    tableBody.appendChild(newRow);
+                }
+                else {
+                    console.log('Ошибка при создании напитка');
+                }
+                
                 $('#create-drink-modal').modal('hide');
             });
     }
@@ -60,14 +76,19 @@ function updateDrink(event) {
             },
             body: JSON.stringify(drink)
         })
-            .then(() => {
-                let table = document.getElementById('admin-drinks-list');
-                let tableBody = table.querySelector('tbody');
-                let currentDrinkRow = tableBody.querySelector(`tr[data-drink-id="${drink.id}"]`);
-                let currentDrinkRowCells = currentDrinkRow.querySelectorAll('td');
+            .then(response => {
+                if (response.ok) {
+                    let table = document.getElementById('admin-drinks-list');
+                    let tableBody = table.querySelector('tbody');
+                    let currentDrinkRow = tableBody.querySelector(`tr[data-drink-id="${drink.id}"]`);
+                    let currentDrinkRowCells = currentDrinkRow.querySelectorAll('td');
 
-                currentDrinkRowCells[1].textContent = drink.price;
-                currentDrinkRowCells[2].textContent = drink.quantity;
+                    currentDrinkRowCells[1].textContent = drink.price;
+                    currentDrinkRowCells[2].textContent = drink.quantity;
+                }
+                else {
+                    console.log('Ошибка при изменении данных напитка');
+                }
 
                 $('#update-drink-modal').modal('hide');
             });
@@ -99,13 +120,19 @@ function deleteDrink(event) {
         },
         body: parseInt(event.target.dataset.drinkId)
     })
-        .then(() => {
-            let table = document.getElementById('admin-drinks-list');
-            let tableBody = table.querySelector('tbody');
-            let currentDrinkRow = tableBody.querySelector(`tr[data-drink-id="${event.target.dataset.drinkId}"]`);
-            if (currentDrinkRow != null) {
-                tableBody.removeChild(currentDrinkRow);
+        .then(response => {
+            if (response.ok) {
+                let table = document.getElementById('admin-drinks-list');
+                let tableBody = table.querySelector('tbody');
+                let currentDrinkRow = tableBody.querySelector(`tr[data-drink-id="${event.target.dataset.drinkId}"]`);
+                if (currentDrinkRow != null) {
+                    tableBody.removeChild(currentDrinkRow);
+                }
             }
+            else {
+                console.log('Ошибка при удалении напитка');
+            }
+
             $('#delete-drink-modal').modal('hide');
         })
 }
@@ -176,12 +203,18 @@ function changeBlockState(event) {
         },
         body: parseInt(event.target.dataset.coinId)
     })
-        .then(() => {
-            let table = document.getElementById('admin-coins-list');
-            let tableBody = table.querySelector('tbody');
-            let currentDrinkRow = tableBody.querySelector(`tr[data-coin-id="${event.target.dataset.coinId}"]`);
-            let currentImg = currentDrinkRow.querySelector('img');
-            currentImg.src = changeBlockIcon(currentImg.src);
+        .then(response => {
+            if (response.ok) {
+                let table = document.getElementById('admin-coins-list');
+                let tableBody = table.querySelector('tbody');
+                let currentDrinkRow = tableBody.querySelector(`tr[data-coin-id="${event.target.dataset.coinId}"]`);
+                let currentImg = currentDrinkRow.querySelector('img');
+                currentImg.src = changeBlockIcon(currentImg.src);
+            }
+            else {
+                console.log('Ошибка при изменении статуса блокировки монеты');
+            }
+
             $('#change-state-modal').modal('hide');
         })
 }

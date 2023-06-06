@@ -1,13 +1,12 @@
 using TestWork.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using TestWork.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddJsonFile("appsettings.json");
 
 builder.Services.AddDbContext<TestWorkContext>(options =>
-                       options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+                       options.UseSqlServer(builder.Configuration.GetConnectionString("LocalConnection")));
 
 builder.Services.AddTransient<DrinksService>();
 builder.Services.AddTransient<CoinsService>();

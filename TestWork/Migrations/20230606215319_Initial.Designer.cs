@@ -11,8 +11,8 @@ using TestWork.Models;
 namespace TestWork.Migrations
 {
     [DbContext(typeof(TestWorkContext))]
-    [Migration("20230605223356_AddCoinModelAlias")]
-    partial class AddCoinModelAlias
+    [Migration("20230606215319_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,14 +32,15 @@ namespace TestWork.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Alias")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("Denomination")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsBlocked")
                         .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
